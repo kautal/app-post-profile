@@ -1,3 +1,10 @@
+1. Pastikan Node Js terinstall di komputer anda
+2. clone repositori berikut
+3. sesudah clone ,masuk ke direktori repositori dan jalankan 'npm install' pada command prompt
+4. untuk menjalankan aplikasi jalankan 'npm start' pada command propmt
+5. ini client side dari repo post-profile
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
