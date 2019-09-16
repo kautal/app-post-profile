@@ -7,7 +7,7 @@ export default function Header () {
     return (
         <div>
             <div>
-                <span>{moment().format('LLLL')}</span>
+                <span>{moment().format('llll')}</span>
                 <h3><Link to='/'>Home</Link></h3>
                 <h3>Logout</h3>
             </div>

@@ -60,6 +60,7 @@ class EditEmployee extends React.Component {
                 address: {value: this.state.employee.address},
                 province: {value: this.state.employee.province},
                 city: {value: this.state.employee.city},
+                stats: {value: this.state.employee.stats}
             })
             console.log(this.state.employee.name)
             console.log(this.state.name.value)
@@ -68,7 +69,7 @@ class EditEmployee extends React.Component {
         })
     }
 
-    editForm = (name, birthday, email, telp, address, province, city) => {
+    editForm = (name, birthday, email, telp, address, province, city, stats) => {
         axios.put(`${urlApi}?id=${this.state.employee.id}`, {
             name: name,
             email: email,
@@ -76,7 +77,8 @@ class EditEmployee extends React.Component {
             telp: telp,
             address: address,
             province: province,
-            city: city
+            city: city,
+            stats: stats
 
         }).then(res => {
             alert('Success')
@@ -94,7 +96,8 @@ class EditEmployee extends React.Component {
             this.state.telp.value, 
             this.state.address.value, 
             this.state.province.value, 
-            this.state.city.value 
+            this.state.city.value,
+            this.state.stats.value
         )
         this.setState({
             name: {
@@ -118,6 +121,9 @@ class EditEmployee extends React.Component {
             city: {
                 value: this.state.city.value
             },
+            stats: {
+                value: this.state.stats.value
+            }
         })
     }
 
@@ -150,6 +156,10 @@ class EditEmployee extends React.Component {
         this.setState({ city: {value: e.target.value }})
     }
 
+    onChangeStats = (e) => {
+        this.setState({ stats: {value: e.target.value }})
+    }
+
     render() {
         return (
             <div>
@@ -177,7 +187,7 @@ class EditEmployee extends React.Component {
                         <Input value={this.state.city.value} placeholder={this.state.city.value} onChange={this.onChangeCity} />
                     </FormItem>
                     <FormItem label="Status" colon={false} >
-                        <RadioGroup defaultValue={this.state.stats.value}>
+                        <RadioGroup name='stats' onChange={this.onChangeStats} value={this.state.stats.value}>
                             <Radio value='Dilakukan'>Enable</Radio>
                             <Radio value='Belum Dilakukan'>Disable</Radio>
                         </RadioGroup>

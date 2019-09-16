@@ -7,6 +7,7 @@ import moment from 'moment'
 
 const { Search } = Input
 const urlApi = 'http://localhost:4000/api/employee'
+moment.locale()
 
 export default class App extends React.Component {
   constructor(props) {
@@ -21,12 +22,11 @@ export default class App extends React.Component {
     this.fetchAll()
   }
 
-  fetchAll() {
-    axios.get(urlApi).then(res => {
-      let employees = res.data
-      this.setState({ employees })
-      moment(this.state.employees.birthday).format('LLLL')
-      console.log(employees)
+  async fetchAll() {
+    await axios.get(urlApi).then(res => {
+      const employees = res.data
+      this.setState({employees})
+      console.log(this.state.employees)
     }).catch(err => {
       console.log(err)
     })
@@ -102,6 +102,7 @@ export default class App extends React.Component {
         )
       },
     ]
+
     return (
       <div>
         <Header/>
